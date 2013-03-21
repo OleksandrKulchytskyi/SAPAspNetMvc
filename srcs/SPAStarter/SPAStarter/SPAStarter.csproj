@@ -122,6 +122,7 @@
     <Content Include="App\durandal\viewModel.js" />
     <Content Include="App\durandal\viewModelBinder.js" />
     <Content Include="App\durandal\widget.js" />
+    <Content Include="App\Shell.html" />
     <Content Include="Content\app.css" />
     <Content Include="Content\durandal.css" />
     <Content Include="Content\font\fontawesome-webfont.svg" />
