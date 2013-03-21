@@ -2,17 +2,20 @@
 
 namespace SPAStarter.Models
 {
-    public class TimeSlot
-    {
-        public TimeSlot()
-        {
-            IsSessionSlot = true;
-        }
-        public int Id { get; set; }
-        public DateTime Start { get; set; }
-        public bool IsSessionSlot { get; set; }
+	public class TimeSlot
+	{
+		public TimeSlot()
+		{
+			IsSessionSlot = true;
+		}
 
-        /// <summary>Duration of session in minutes.</summary>
-        public int Duration { get; set; }
-    }
+		public int Id { get; set; }
+
+		public DateTime Start { get; set; }
+
+		public bool IsSessionSlot { get; set; }
+
+		/// <summary>Duration of session in minutes.</summary>
+		public int Duration { get; set; }
+	}
 }

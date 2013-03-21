@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web.Http;
 using System.Web.Routing;
-using System.Web.Http;
-using System.Web.Handlers;
 
 namespace SPAStarter
 {
-	public class RouteConfig
+	public static class RouteConfig
 	{
 		public static string ControllerOnly = "ApiControllerOnly";
 		public static string ControllerAndId = "ApiControllerAndIntegerId";
@@ -36,7 +31,7 @@ namespace SPAStarter
 			// This controller-per-type route lets us fetch a single resource by numeric id
 			// It finds the appropriate method GetById method
 			// on the controller using WebAPI conventions
-			// The {id} is not optional, must be an integer, and 
+			// The {id} is not optional, must be an integer, and
 			// must match a method with a parameter named "id" (case insensitive)
 			//
 			//  ex: api/sessions/1
@@ -49,16 +44,16 @@ namespace SPAStarter
 			);
 
 			/********************************************************
-			* The integer id constraint is necessary to distinguish 
+			* The integer id constraint is necessary to distinguish
 			* the {id} route above from the {action} route below.
 			* For example, the route above handles
-			*     "api/sessions/1" 
+			*     "api/sessions/1"
 			* whereas the route below handles
 			*     "api/lookups/all"
 			********************************************************/
 
 			// This RPC style route is great for lookups and custom calls
-			// It matches the {action} to a method on the controller 
+			// It matches the {action} to a method on the controller
 			//
 			// ex: api/lookups/all
 			// ex: api/lookups/rooms
@@ -73,7 +68,6 @@ namespace SPAStarter
 			//    url: "{controller}/{action}/{id}",
 			//    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
 			//);
-
 		}
 	}
 }
