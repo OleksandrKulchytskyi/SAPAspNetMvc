@@ -3,6 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPAStarter", "SPAStarter\SPAStarter.csproj", "{B81DF408-62D6-443C-9FBF-E2016F8B6074}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPAStarter.Contracts", "SPAStarter.Contracts\SPAStarter.Contracts.csproj", "{3345B892-BAD9-41E4-88EC-9579F26698C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPAStarter.Models", "SPAStarter.Models\SPAStarter.Models.csproj", "{3085158E-A124-40DF-8606-AD82D8EDDC96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPAStarter.Data", "SPAStarter.Data\SPAStarter.Data.csproj", "{9CD6D487-A901-4632-84B9-4DE704B3FF36}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{B9B9D59D-9318-43DD-902C-F93793341E36}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\NLipsum.Core.dll = Lib\NLipsum.Core.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +24,18 @@ Global
 		{B81DF408-62D6-443C-9FBF-E2016F8B6074}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B81DF408-62D6-443C-9FBF-E2016F8B6074}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B81DF408-62D6-443C-9FBF-E2016F8B6074}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3345B892-BAD9-41E4-88EC-9579F26698C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3345B892-BAD9-41E4-88EC-9579F26698C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3345B892-BAD9-41E4-88EC-9579F26698C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3345B892-BAD9-41E4-88EC-9579F26698C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3085158E-A124-40DF-8606-AD82D8EDDC96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3085158E-A124-40DF-8606-AD82D8EDDC96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3085158E-A124-40DF-8606-AD82D8EDDC96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3085158E-A124-40DF-8606-AD82D8EDDC96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CD6D487-A901-4632-84B9-4DE704B3FF36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CD6D487-A901-4632-84B9-4DE704B3FF36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CD6D487-A901-4632-84B9-4DE704B3FF36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CD6D487-A901-4632-84B9-4DE704B3FF36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
