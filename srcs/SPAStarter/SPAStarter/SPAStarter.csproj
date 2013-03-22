@@ -130,7 +130,7 @@
     <Content Include="App\services\logger.js" />
     <Content Include="App\main.js" />
     <Content Include="App\services\model.js" />
-    <Content Include="App\views\Shell.html" />
+    <Content Include="App\views\shell.html" />
     <Content Include="App\viewmodels\shell.js" />
     <Content Include="App\views\speakers.html" />
     <Content Include="App\viewmodels\speakers.js" />

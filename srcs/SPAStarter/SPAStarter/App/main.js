@@ -8,6 +8,6 @@ define(function (require) {
 
 	system.debug(true);
 	app.start().then(function () {
-		app.setRoot('views/shell');
+		app.setRoot('viewmodels/shell');
 	});
 });
