@@ -41,6 +41,9 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="dotless.Core">
+      <HintPath>..\packages\dotless.1.3.1.0\lib\dotless.Core.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
@@ -104,6 +107,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\durandal\plugins\router.js" />
+    <Content Include="App\services\dataservice.js" />
     <Content Include="App\durandal\amd\almond-custom.js" />
     <Content Include="App\durandal\amd\optimizer.exe" />
     <Content Include="App\durandal\amd\r.js" />
@@ -122,7 +127,14 @@
     <Content Include="App\durandal\viewModel.js" />
     <Content Include="App\durandal\viewModelBinder.js" />
     <Content Include="App\durandal\widget.js" />
-    <Content Include="App\Shell.html" />
+    <Content Include="App\services\logger.js" />
+    <Content Include="App\main.js" />
+    <Content Include="App\services\model.js" />
+    <Content Include="App\views\Shell.html" />
+    <Content Include="App\viewmodels\shell.js" />
+    <Content Include="App\views\speakers.html" />
+    <Content Include="App\viewmodels\speakers.js" />
+    <Content Include="App_Data\CodeCamper.sdf" />
     <Content Include="Content\app.css" />
     <Content Include="Content\durandal.css" />
     <Content Include="Content\font\fontawesome-webfont.svg" />
@@ -131,9 +143,41 @@
     <Content Include="Content\font\fontawesome-webfont.eot" />
     <Content Include="Content\font\FontAwesome.otf" />
     <Content Include="Content\ie10mobile.css" />
+    <Content Include="Content\images\icon.png" />
+    <Content Include="Content\images\photos\aaron_skonnard.jpg" />
+    <Content Include="Content\images\photos\dan_wahlin.jpg" />
+    <Content Include="Content\images\photos\dave_ward.jpg" />
+    <Content Include="Content\images\photos\elijah_manor.jpg" />
+    <Content Include="Content\images\photos\eric_barnard.jpg" />
+    <Content Include="Content\images\photos\esteban_garcia.jpg" />
+    <Content Include="Content\images\photos\felix_fanboi.jpg" />
+    <Content Include="Content\images\photos\fritz_onion.jpg" />
+    <Content Include="Content\images\photos\glenn_block.jpg" />
+    <Content Include="Content\images\photos\hans_fjallemark.jpg" />
+    <Content Include="Content\images\photos\howard_dierking.jpg" />
+    <Content Include="Content\images\photos\jesse_liberty.jpg" />
+    <Content Include="Content\images\photos\jim_cowart.jpg" />
+    <Content Include="Content\images\photos\john_papa.jpg" />
+    <Content Include="Content\images\photos\john_smith.jpg" />
+    <Content Include="Content\images\photos\julie_lerman.jpg" />
+    <Content Include="Content\images\photos\mads_kristensen.jpg" />
+    <Content Include="Content\images\photos\mike_callaghan.jpg" />
+    <Content Include="Content\images\photos\pete_brown.jpg" />
+    <Content Include="Content\images\photos\ryan_niemeyer.jpg" />
+    <Content Include="Content\images\photos\scott_guthrie.jpg" />
+    <Content Include="Content\images\photos\scott_hanselman.jpg" />
+    <Content Include="Content\images\photos\scott_hunter.jpg" />
+    <Content Include="Content\images\photos\shawn_wildermuth.jpg" />
+    <Content Include="Content\images\photos\steve_sanderson.jpg" />
+    <Content Include="Content\images\photos\sue_menot.jpg" />
+    <Content Include="Content\images\photos\tim_heuer.jpg" />
+    <Content Include="Content\images\photos\unknown_person.jpg" />
+    <Content Include="Content\images\photos\ward_bell.jpg" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Index.cshtml" />
+    <Content Include="Content\Style.less" />
+    <None Include="_splash.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
@@ -153,6 +197,8 @@
     <Content Include="Scripts\knockout-2.2.1.debug.js" />
     <Content Include="Scripts\knockout-2.2.1.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\sammy-0.7.4.js" />
+    <Content Include="Scripts\sammy-0.7.4.min.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config" />
@@ -208,9 +254,7 @@
     </None>
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SPAStarter.Contracts\SPAStarter.Contracts.csproj">
       <Project>{3345b892-bad9-41e4-88ec-9579f26698c6}</Project>
@@ -238,9 +282,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>33766</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:19198/</IISUrl>
+          <IISUrl>http://localhost:19199/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

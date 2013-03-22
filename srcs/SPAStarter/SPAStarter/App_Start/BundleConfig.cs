@@ -9,6 +9,7 @@ namespace SPAStarter
 		{
 			bundles.IgnoreList.Clear();
 			AddDefaultIgnorePatterns(bundles.IgnoreList);
+			AddLessConfig(bundles);
 
 			bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
 						"~/Scripts/jquery-1.9.1.min.js"));
@@ -19,18 +20,25 @@ namespace SPAStarter
 			bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
 						"~/Scripts/bootstrap.min.js"));
 
+			bundles.Add(new ScriptBundle("~/bundles/vendors").Include(
+						"~/Scripts/jquery-1.9.1.min.js",
+						"~/Scripts/knockout-{version}.js",
+						"~/Scripts/bootstrap.min.js",
+						"~/Scripts/toastr*"));
+
 			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
 						"~/Scripts/modernizr-*"));
 
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 						"~/Content/bootstrap-responsive.min.css",
 						"~/Content/bootstrap.min.css",
+						"~/Content/toastr.min.css",
 						"~/Content/font-awesome.min.css",
 						"~/Content/ie10mobile.css",
 						"~/Content/app.css"));
 		}
 
-		public static void AddDefaultIgnorePatterns(IgnoreList ignoreList)
+		private static void AddDefaultIgnorePatterns(IgnoreList ignoreList)
 		{
 			if (ignoreList == null)
 				throw new ArgumentNullException("ignoreList");
@@ -41,6 +49,21 @@ namespace SPAStarter
 			//ignoreList.Ignore("*.debug.js", OptimizationMode.WhenEnabled);
 			//ignoreList.Ignore("*.min.js", OptimizationMode.WhenDisabled);
 			//ignoreList.Ignore("*.min.css", OptimizationMode.WhenDisabled);
+		}
+
+		private static void AddLessConfig(BundleCollection bundles)
+		{
+			bundles.Add(new Bundle("~/Content/less",
+									new LessTransform(), new CssMinify()).Include("~/Content/Style.less"));
+		}
+	}
+
+	public class LessTransform : IBundleTransform
+	{
+		public void Process(BundleContext context, BundleResponse response)
+		{
+			response.Content = dotless.Core.Less.Parse(response.Content);
+			response.ContentType = "text/css";
 		}
 	}
 }

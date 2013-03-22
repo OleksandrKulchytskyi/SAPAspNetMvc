@@ -14,6 +14,7 @@
 	<!-- Mobile viewport optimized: h5bp.com/viewport -->
 	<meta name="viewport" content="width=device-width">
 	<title>SPA Starter</title>
+	@Styles.Render("~/Content/less")
 	@Styles.Render("~/Content/css")
 	<script language="javascript">
 		var console = (window.console = window.console || {});
@@ -34,7 +35,7 @@
 	@Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-	<div id="busyindicator"></div>
+	@*<div id="busyindicator"></div>
 	<header>
 		<h1>SPA Starter</h1>
 		<nav id="shellTop-view" class="main-nav">
@@ -52,19 +53,19 @@
 		<p>
 			<h3>Helloo this is SPA Starter Web Application.</h3>
 		</p>
-	</section>
+	</section>*@
 	<!--When bundling, load in this sequence:
     1) shivs and jQuery
     2) 3rd party libraries
     3) require.js
     4) your app libraries
     5) main.js -->
-	@Scripts.Render("~/bundles/jquery")
-	@*"~/bundles/jsextlibs", 
-					"~/Scripts/lib/require.js", 
-					"~/bundles/jsapplibs",
-					"~/bundles/jsmocks", // remove mocks for release
-					"~/Scripts/main.js")*@
 
+	<div id="applicationHost">
+		@RenderPage("_splash.cshtml")
+	</div>
+
+	@Scripts.Render("~/bundles/vendors")
+	<script src="App/durandal/amd/require.js" data-main="App/main"></script>
 </body>
 </html>
