@@ -24,7 +24,9 @@ namespace SPAStarter
 						"~/Scripts/jquery-1.9.1.min.js",
 						"~/Scripts/knockout-{version}.js",
 						"~/Scripts/bootstrap.min.js",
-						"~/Scripts/toastr*"));
+						"~/Scripts/sammy-{version}.js",
+						"~/Scripts/moment.min.js",
+						"~/Scripts/toastr.min.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
 						"~/Scripts/modernizr-*"));
