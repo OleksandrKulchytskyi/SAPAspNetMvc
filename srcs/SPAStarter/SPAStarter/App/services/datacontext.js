@@ -20,7 +20,7 @@
 
 		var getSessions = function (sessionsObservable) {
 
-			var query = EntityQuery.from("Sessions").orderBy("timeSlot,speaker.firstName");
+			var query = EntityQuery.from("Sessions").orderBy("code");
 			return manager.executeQuery(query).
 				then(querySuceeded).fail(onFail);
 
