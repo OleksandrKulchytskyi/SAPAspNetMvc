@@ -7,7 +7,7 @@ namespace SPAStarter.Controllers
 {
     public class SessionBriefsController : ApiControllerBase
     {
-        public SessionBriefsController(ICodeCamperUow uow)
+        public SessionBriefsController(ISPAUow uow)
         {
             Uow = uow;
         }

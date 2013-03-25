@@ -26,6 +26,8 @@ namespace SPAStarter
 						"~/Scripts/bootstrap.min.js",
 						"~/Scripts/sammy-{version}.js",
 						"~/Scripts/moment.min.js",
+						"~/Scripts/q.js",
+						"~/Scripts/breeze.*",
 						"~/Scripts/toastr.min.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

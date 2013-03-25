@@ -5,7 +5,7 @@ namespace SPAStarter.Contracts
 	/// <summary>
 	/// Interface for the Code Camper "Unit of Work"
 	/// </summary>
-	public interface ICodeCamperUow
+	public interface ISPAUow
 	{
 		// Save pending changes to the data store.
 		void Commit();

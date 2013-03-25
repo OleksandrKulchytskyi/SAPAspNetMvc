@@ -21,9 +21,9 @@ namespace SPAStarter.Data
 	/// The repositories rely on their parent UoW to provide the interface to the
 	/// data layer (which is the EF DbContext in Code Camper).
 	/// </remarks>
-	public class CodeCamperUow : ICodeCamperUow, IDisposable
+	public class SPAStarterUow : ISPAUow, IDisposable
 	{
-		public CodeCamperUow(IRepositoryProvider repositoryProvider)
+		public SPAStarterUow(IRepositoryProvider repositoryProvider)
 		{
 			CreateDbContext();
 

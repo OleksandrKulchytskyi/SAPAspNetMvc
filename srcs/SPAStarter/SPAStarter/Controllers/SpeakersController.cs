@@ -7,7 +7,7 @@ namespace SPAStarter.Controllers
 {
     public class SpeakersController : ApiControllerBase
     {
-        public SpeakersController(ICodeCamperUow uow)
+        public SpeakersController(ISPAUow uow)
         {
             Uow = uow;
         }

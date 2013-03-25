@@ -10,7 +10,7 @@ namespace SPAStarter.Controllers
 {
 	public class PersonsController : ApiControllerBase
 	{
-		public PersonsController(ICodeCamperUow uow)
+		public PersonsController(ISPAUow uow)
 		{
 			Uow = uow;
 		}

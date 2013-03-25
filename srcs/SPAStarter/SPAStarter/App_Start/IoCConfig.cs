@@ -18,7 +18,7 @@ namespace SPAStarter
 			kernel.Bind<RepositoryFactories>().To<RepositoryFactories>().InSingletonScope();
 
 			kernel.Bind<IRepositoryProvider>().To<RepositoryProvider>();
-			kernel.Bind<ICodeCamperUow>().To<CodeCamperUow>();
+			kernel.Bind<ISPAUow>().To<SPAStarterUow>();
 
 			// Tell WebApi how to use our Ninject IoC
 			config.DependencyResolver = new NinjectDependencyResolver(kernel);

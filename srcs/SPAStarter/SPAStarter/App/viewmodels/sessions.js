@@ -1,12 +1,12 @@
 ﻿define(['services/datacontext'],
 function (datacontext) {
-	var speakers = ko.observableArray();
+	var sessions = ko.observableArray();
 	var initialized = false;
 
 	var vm = {
 		activate: activate,
-		speakers: speakers,
-		title: 'Speakers',
+		sessions: sessions,
+		title: 'Sessions',
 		refresh: refresh
 	};
 	return vm;
@@ -19,6 +19,7 @@ function (datacontext) {
 	}
 
 	function refresh() {
-		return datacontext.getSpeakers(speakers);
+		console.log('refreshing');
+		return datacontext.getSessions(sessions);
 	}
 });

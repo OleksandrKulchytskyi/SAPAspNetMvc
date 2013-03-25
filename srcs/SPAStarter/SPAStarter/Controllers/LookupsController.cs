@@ -8,7 +8,7 @@ namespace SPAStarter.Controllers
 {
 	public class LookupsController : ApiControllerBase
 	{
-		public LookupsController(ICodeCamperUow uow)
+		public LookupsController(ISPAUow uow)
 		{
 			Uow = uow;
 		}

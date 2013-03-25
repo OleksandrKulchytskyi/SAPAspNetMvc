@@ -11,7 +11,7 @@ namespace SPAStarter.Controllers
 {
 	public class SessionsController : ApiControllerBase
 	{
-		public SessionsController(ICodeCamperUow uow)
+		public SessionsController(ISPAUow uow)
 		{
 			Uow = uow;
 		}

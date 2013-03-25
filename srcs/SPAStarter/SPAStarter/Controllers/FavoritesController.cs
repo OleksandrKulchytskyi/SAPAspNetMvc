@@ -7,7 +7,7 @@ namespace SPAStarter.Controllers
 {
     public class FavoritesController : ApiControllerBase
     {
-        public FavoritesController(ICodeCamperUow uow)
+        public FavoritesController(ISPAUow uow)
         {
             Uow = uow;
         }

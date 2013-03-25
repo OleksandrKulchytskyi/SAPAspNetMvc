@@ -5,7 +5,7 @@ namespace SPAStarter.Controllers
 {
 	public abstract class ApiControllerBase : ApiController
 	{
-		protected ICodeCamperUow Uow { get; set; }
+		protected ISPAUow Uow { get; set; }
 
 		// NOT NECESSARY TO DISPOSE THE UOW IN OUR CONTROLLERS
 		// Recall that we let IoC inject the Uow into our controllers

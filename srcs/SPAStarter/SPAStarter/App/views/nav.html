@@ -1,0 +1,18 @@
+﻿<nav class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<a class="brand" href="/">
+			<span class="title">SPA Starter</span>
+			<span class="jump-start-title">[Jumpstarter] Durandal - 1 Page</span>
+		</a>
+		<div data-bind="css: { active: router.isNavigating }" class="pull-right loader">
+			<i class="icon-spinner icon-2X icon-spin"></i>
+		</div>
+	</div>
+	<div class="navbar-inner navbar-secondary">
+		<div class="btn-group"
+			data-bind="foreach: router.visibleRoutes">
+			<a data-bind="attr: { href: hash }, css: { active: isActive }, html: caption"
+				class="btn btn-info"></a>
+		</div>
+	</div>
+</nav>

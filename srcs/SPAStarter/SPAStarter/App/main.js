@@ -7,7 +7,7 @@ define(function (require) {
 		app = require('durandal/app'),
 		router = require('durandal/plugins/router'),
 		viewLocator = require('durandal/viewLocator'),
-		logger = reguire("services/logger");
+		logger = require("services/logger");
 
 	system.debug(true);
 	app.start().then(function () {
@@ -16,6 +16,8 @@ define(function (require) {
 
 		viewLocator.useConvention();
 
+		//transition was added
+		//app.setRoot('viewmodels/shell', 'entrance');
 		app.setRoot('viewmodels/shell');
 
 		router.handleInvalidRoute = function (route, params) {
