@@ -23,7 +23,6 @@
 				then(querySuceeded).fail(onFail);
 
 			function querySuceeded(data) {
-				console.log(data);
 				var list = mapper.mapDtosToEntities(manager, data.results, entityNames.speaker, 'id');
 				if (speakersObservable) {
 					speakersObservable(list);
@@ -81,8 +80,18 @@
 		};
 
 		var primeData = function () {
-			return Q.all([getLookups(),
+			var promise = Q.all([getLookups(),
 				getSpeakerPartials(null, true)]);
+			return promise.then(success);
+
+			function success() {
+				datacontext.lookups = {
+					rooms: getLocal('Rooms', 'name'),
+					tracks: getLocal('Tracks', 'name'),
+					timeSlots: getLocal('TimeSlots', 'start'),
+					speakers: getLocal('Persons', model.orderBy.speaker)
+				};
+			}
 		};
 
 		var datacontext = {

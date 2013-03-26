@@ -27,7 +27,6 @@
 		return (imageSettings.imageBasePath + (source || imageSettings.unknownPersonImageSource));
 	};
 
-
 	var model = {
 		makeImageName: makeImageName,
 		SpeakerPartial: SpeakerPartial,

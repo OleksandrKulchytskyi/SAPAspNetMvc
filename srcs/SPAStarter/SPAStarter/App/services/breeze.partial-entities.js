@@ -1,12 +1,12 @@
 ﻿define(function () {
 	var defaultExtension = { isPartial: true };
+
 	var mapper = {
 		mapDtosToEntities: mapDtosToEntities
 	};
 	return mapper;
 
 	function mapDtosToEntities(manager, dtos, entityName, keyName, extendWith) {
-		console.log(dtos);
 		return dtos.map(dtoToEntityMapper);
 
 		function dtoToEntityMapper(dto) {
