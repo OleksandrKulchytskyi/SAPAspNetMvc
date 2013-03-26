@@ -1,44 +1,94 @@
-﻿define(['durandal/system', 'services/logger', 'services/model', 'config'],
-	function (system, logger, model, config) {
+﻿define(['durandal/system', 'services/logger', 'services/model', 'config', 'services/breeze.partial-entities'],
+	function (system, logger, model, config, mapper) {
 
 		var EntityQuery = breeze.EntityQuery,
 			manager = configureBreezeManager();
 
-		var getSpekears = function (speakersObservable) {
+		var entityNames = model.entityNames;
 
-			var query = EntityQuery.from("Speakers").orderBy("firstName,lastName");
+		var getSpeakerPartials = function (speakersObservable, forceRemote) {
+
+			if (!forceRemote) {
+				var p = getLocal(entityNames.speaker, model.orderBy.speaker);
+				if (p.length > 3) {
+					//edge case
+					speakersObservable(p);
+					return Q.resolve();
+				}
+			}
+
+			var query = EntityQuery.from("Speakers")
+				.select('id,firstName,lastName,imageSource').orderBy('firstName,lastName');
 			return manager.executeQuery(query).
 				then(querySuceeded).fail(onFail);
 
 			function querySuceeded(data) {
+				console.log(data);
+				var list = mapper.mapDtosToEntities(manager, data.results, entityNames.speaker, 'id');
 				if (speakersObservable) {
-					speakersObservable(data.result);
+					speakersObservable(list);
 				}
 				log("Speakers is retrieved", data, true);
 			}
 		};
 
-		var getSessions = function (sessionsObservable) {
+		var getSessionPartials = function (sessionsObservable, forceRemote) {
 
-			var query = EntityQuery.from("Sessions").orderBy("code");
+			if (!forceRemote) {
+				var p = getLocal(entityNames.session, model.orderBy.session);
+				if (p.length > 3) {
+					//edge case
+					sessionsObservable(p);
+					return Q.resolve();
+				}
+			}
+
+			var query = EntityQuery.from("Sessions")
+				.select('id,title,code,speakerId,trackId,roomId').orderBy("code");
 			return manager.executeQuery(query).
 				then(querySuceeded).fail(onFail);
 
 			function querySuceeded(data) {
+				var list = mapper.mapDtosToEntities(manager, data.results, entityNames.session, 'id');
 				if (sessionsObservable) {
-					sessionsObservable(data.result);
+					sessionsObservable(list);
 				}
 				log("Sessions is retrieved", data, true);
 			}
 		};
 
+		var getSessionById = function (sessionId, sessionObservable) {
+			return manager.fetchEntityByKey(entityNames.session, sessionId, true)
+							.then(fetchSucceeded)
+							.fail(onFail);
+
+			function fetchSucceeded(data) {
+				var s = data.entity;
+				return s.isPartial() ? refreshSession(s) : sessionObservable(s);
+			}
+
+			function refreshSession(session) {
+				return EntityQuery.fromEntities(session).using(manager).execute()
+				.then(querySucceeded).fail(onFail);
+			}
+
+			function querySucceeded(data) {
+				var s = data.results[0];
+				s.isPartial = false;
+				log("Retrieved [Session] from remote data source", s, true);
+				return sessionObservable(s);
+			}
+		};
+
 		var primeData = function () {
-			return Q.all([getLookups(), getSpekears()]);
+			return Q.all([getLookups(),
+				getSpeakerPartials(null, true)]);
 		};
 
 		var datacontext = {
-			getSpeakers: getSpekears,
-			getSessions: getSessions,
+			getSpeakerPartials: getSpeakerPartials,
+			getSessionPartials: getSessionPartials,
+			getSessionById: getSessionById,
 			primeData: primeData
 		};
 		return datacontext;
@@ -56,6 +106,7 @@
 		}
 
 		function onFail(jqXHR, textStatus) {
+			console.log(jqXHR);
 			var msg = 'onFail(). Error getting data.' + textStatus;
 			logger.log(msg, jqXHR, system.getModuleId(datacontext), true);
 		}
@@ -74,5 +125,10 @@
 
 		function log(msg, data, showToast) {
 			logger.log(msg, data, system.getModuleId(datacontext), showToast);
+		}
+
+		function getLocal(resource, ordering) {
+			var query = EntityQuery.from(resource).orderBy(ordering);
+			return manager.executeQueryLocally(query);
 		}
 	});

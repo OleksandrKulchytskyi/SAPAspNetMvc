@@ -1,0 +1,39 @@
+﻿<section id="session-view" class="view">
+	<h3 class="page-title" data-bind="text:title"></h3>
+	<div class="button-bar">
+		<button class="btn btn-info"
+			data-bind="click: goBack"><i class="icon-hand-left"></i></button>
+	</div>
+	<div data-bind="with: session">
+		<div class="titleblock">
+			<label for="title">Title</label>
+			<address id="title" data-bind="text: title"/>
+		</div>
+		<div class="details-left">
+			<div>
+				<label>Track</label>
+				<address data-bind="text: track().name"></address>
+			</div>
+			<div>
+				<label>TimeSlot</label>
+				<address data-bind="text: timeSlot().name"></address>
+			</div>
+			<div>
+				<label>Room</label>
+				<address data-bind="text: room().name"></address>
+			</div>
+			<div>
+				<label>Code</label>
+				<address data-bind="text: code"></address>
+			</div>
+			<div>
+				<label>level</label>
+				<address data-bind="text: level"></address>
+			</div>
+			<div data-bind="with:speaker">
+				<img data-bind="attr: {src:imageName}" class="image-palaroid" />
+				<address data-bind="text:fullName"></address>
+			</div>
+		</div>
+	</div>
+</section>

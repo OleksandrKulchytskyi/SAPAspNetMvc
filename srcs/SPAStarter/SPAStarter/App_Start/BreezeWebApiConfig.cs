@@ -15,10 +15,7 @@ namespace SPAStarter
 	{
 		public static void RegisterBreezePreStart()
 		{
-			GlobalConfiguration.Configuration.Routes.MapHttpRoute(
-				name: "BreezeApi",
-				routeTemplate: "api/{controller}/{action}"
-			);
+			GlobalConfiguration.Configuration.Routes.MapHttpRoute(name: "BreezeApi", routeTemplate: "api/{controller}/{action}");
 		}
 	}
 }

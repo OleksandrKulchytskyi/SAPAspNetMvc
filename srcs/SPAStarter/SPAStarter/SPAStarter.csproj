@@ -156,8 +156,10 @@
     <Content Include="App\services\logger.js" />
     <Content Include="App\main.js" />
     <Content Include="App\services\model.js" />
+    <Content Include="App\viewmodels\sessiondetail.js" />
     <Content Include="App\viewmodels\sessions.js" />
     <Content Include="App\views\nav.html" />
+    <Content Include="App\views\sessiondetail.html" />
     <Content Include="App\views\sessions.html" />
     <Content Include="App\views\shell.html" />
     <Content Include="App\viewmodels\shell.js" />
@@ -206,6 +208,7 @@
     <Content Include="Content\toastr.min.css" />
     <Content Include="Index.cshtml" />
     <Content Include="Content\Style.less" />
+    <Content Include="App\services\breeze.partial-entities.js" />
     <None Include="_splash.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Content\bootstrap-responsive.css" />
@@ -237,6 +240,7 @@
     <Content Include="Scripts\sammy-0.7.4.min.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />

@@ -1,8 +1,18 @@
-﻿define(function () {
+﻿define(['config'], function (config) {
 
-	var imageSettings = {
-		imageBasePath: '../Content/images/photos/',
-		unknownPersonImageSource: 'unknown_person.jpg'
+	var imageSettings = config.imageSettings;
+
+	var orderBy = {
+		speaker: 'firstName,lastName',
+		session: 'timeSlotId'
+	};
+
+	var entityNames = {
+		speaker: 'Person',
+		session: 'Session',
+		room: 'Room',
+		track: 'Track',
+		timeSlot: 'TimeSlot'
 	};
 
 	var SessionPartial = function (dto) {
@@ -22,14 +32,16 @@
 		makeImageName: makeImageName,
 		SpeakerPartial: SpeakerPartial,
 		SessionPartial: SessionPartial,
-		configureMetadataStore: configureMetadataStore
+		configureMetadataStore: configureMetadataStore,
+		orderBy: orderBy,
+		entityNames: entityNames
 	};
 	return model;
 
 	function configureMetadataStore(metadataStore) {
-		metadataStore.registerEntityTypeCtor('Session', null, sessionInitializer);
-		metadataStore.registerEntityTypeCtor('Person', null, personInitializer);
-		metadataStore.registerEntityTypeCtor('TimeSlot', null, timeSlotInitializer);
+		metadataStore.registerEntityTypeCtor(entityNames.session, function () { this.isPartial = false; }, sessionInitializer);
+		metadataStore.registerEntityTypeCtor(entityNames.speaker, function () { this.isPartial = false; }, personInitializer);
+		metadataStore.registerEntityTypeCtor(entityNames.timeSlot, null, timeSlotInitializer);
 	}
 
 	function mapToObservable(dto) {
