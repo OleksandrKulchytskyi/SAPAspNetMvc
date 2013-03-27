@@ -156,8 +156,10 @@
     <Content Include="App\services\logger.js" />
     <Content Include="App\main.js" />
     <Content Include="App\services\model.js" />
+    <Content Include="App\viewmodels\sessionadd.js" />
     <Content Include="App\viewmodels\sessiondetail.js" />
     <Content Include="App\viewmodels\sessions.js" />
+    <Content Include="App\views\sessionadd.html" />
     <Content Include="App\views\nav.html" />
     <Content Include="App\views\sessiondetail.html" />
     <Content Include="App\views\sessions.html" />

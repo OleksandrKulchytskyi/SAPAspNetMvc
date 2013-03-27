@@ -34,8 +34,8 @@ namespace SPAStarter
 						"~/Scripts/modernizr-*"));
 
 			bundles.Add(new StyleBundle("~/Content/css").Include(
-						"~/Content/bootstrap-responsive.min.css",
 						"~/Content/bootstrap.min.css",
+						"~/Content/bootstrap-responsive.min.css",
 						"~/Content/toastr.min.css",
 						"~/Content/font-awesome.min.css",
 						"~/Content/ie10mobile.css",

@@ -12,15 +12,14 @@
 <head>
 	<meta charset="utf-8" />
 	<!-- Mobile viewport optimized: h5bp.com/viewport -->
-	<meta name="viewport" content="width=device-width">
+	@*<meta name="viewport" content="width=device-width">*@
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>SPA Starter</title>
 	@Styles.Render("~/Content/less")
 	@Styles.Render("~/Content/css")
 	<script language="javascript">
 		var console = (window.console = window.console || {});
-
 		console.log(navigator.userAgent);
-
 		if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 			var msViewportStyle = document.createElement("style");
 			var mq = "@@-ms-viewport{width:auto!important}";
@@ -32,36 +31,9 @@
 	@Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-	@*<div id="busyindicator"></div>
-	<header>
-		<h1>SPA Starter</h1>
-		<nav id="shellTop-view" class="main-nav">
-			<div class="accent-top" data-bind="text: currentUser().fullName"></div>
-			<div class="accent-left"></div>
-			<ul data-bind="with: menuHashes">
-				<li class="route-top"><a data-bind="attr: { href: favorites }">Favorites</a></li>
-				<li class="route-top"><a data-bind="attr: { href: sessions }">Sessions</a></li>
-				<li class="route-top"><a data-bind="attr: { href: speakers }">Speakers</a></li>
-			</ul>
-		</nav>
-	</header>
-
-	<section class="main">
-		<p>
-			<h3>Helloo this is SPA Starter Web Application.</h3>
-		</p>
-	</section>*@
-	<!--When bundling, load in this sequence:
-    1) shivs and jQuery
-    2) 3rd party libraries
-    3) require.js
-    4) your app libraries
-    5) main.js -->
-
 	<div id="applicationHost">
 		@RenderPage("_splash.cshtml")
 	</div>
-
 	@Scripts.Render("~/bundles/vendors")
 	<script src="App/durandal/amd/require.js" data-main="App/main"></script>
 </body>

@@ -1,5 +1,5 @@
 ﻿define(function myfunction() {
-	toastr.options.timeOut = 4000;
+	toastr.options.timeOut = 4500;
 	toastr.options.position = 'toast-bottom-right';
 
 	var imageSettings = {
@@ -26,9 +26,17 @@
 		moduleId: 'viewmodels/sessiondetail',
 		name: 'View a Session',
 		visible: false
+	},
+	{
+		url: 'sessionadd',
+		moduleId: 'viewmodels/sessionadd',
+		name: 'Add a Session',
+		visible: false,
+		caption: '<i class="icon-plus"></i> Add Session',
+		settings: { admin: true }
 	}];
 
-	var startModule = 'speakers';
+	var startModule = 'sessions';
 
 	return {
 		imageSettings: imageSettings,

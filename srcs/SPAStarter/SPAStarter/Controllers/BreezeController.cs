@@ -8,13 +8,23 @@ namespace SPAStarter.Controllers
 	[Breeze.WebApi.BreezeController]
 	public class BreezeController : ApiController
 	{
-		private readonly EFContextProvider<SPAStarter.Data.CodeCamperDbContext> _contextProvider =
-			new EFContextProvider<Data.CodeCamperDbContext>();
+		private readonly EFContextProvider<SPAStarter.Data.CodeCamperDbContext> _contextProvider;
+
+		public BreezeController()
+		{
+			_contextProvider = new EFContextProvider<Data.CodeCamperDbContext>();
+		}
 
 		[HttpGet]
 		public string Metadata()
 		{
 			return _contextProvider.Metadata();
+		}
+
+		[HttpPost]
+		public SaveResult SaveChanges(Newtonsoft.Json.Linq.JObject saveBundle)
+		{
+			return _contextProvider.SaveChanges(saveBundle);
 		}
 
 		[HttpGet]
@@ -43,6 +53,11 @@ namespace SPAStarter.Controllers
 		{
 			return _contextProvider.Context.Persons
 				.Where(p => p.SpeakerSessions.Any());
+		}
+
+		protected override void Dispose(bool disposing)
+		{
+			base.Dispose(disposing);
 		}
 	}
 }

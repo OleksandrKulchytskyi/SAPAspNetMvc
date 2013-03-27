@@ -1,10 +1,13 @@
 ﻿<section id="session-view" class="view">
 	<h3 class="page-title" data-bind="value: title"></h3>
 	<div class="button-bar">
-		<button class="btn btn-info"
-			data-bind="click: goBack">
-			<i class="icon-hand-left"></i>
+		<button class="btn btn-info" data-bind="click: goBack">
+			<i class="icon-hand-left"></i>Back
 		</button>
+		<button class="btn btn-info" data-bind="click: save, enable:canSave">
+			<i class="icon-hdd"></i>Save
+		</button>
+		<i class="icon-asterisk" data-bind="visible: hasChanges"></i>
 	</div>
 	<div data-bind="with: session">
 		<div class="titleblock">
@@ -14,15 +17,15 @@
 		<div class="details-left">
 			<div>
 				<label>Track</label>
-				<select data-bind="options: $parent.tracks, optionsText:'name', value:track" ></select>
+				<select data-bind="options: $parent.tracks, optionsText: 'name', value: track"></select>
 			</div>
 			<div>
 				<label>TimeSlot</label>
-				<select data-bind="options: $parent.timeSlots, optionsText: 'name', value: timeSlot" ></select>
+				<select data-bind="options: $parent.timeSlots, optionsText: 'name', value: timeSlot"></select>
 			</div>
 			<div>
 				<label>Room</label>
-				<select data-bind="options: $parent.rooms, optionsText: 'name', value: room" ></select>
+				<select data-bind="options: $parent.rooms, optionsText: 'name', value: room"></select>
 			</div>
 			<div>
 				<label>Code</label>

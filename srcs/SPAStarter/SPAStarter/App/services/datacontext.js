@@ -1,8 +1,13 @@
 ﻿define(['durandal/system', 'services/logger', 'services/model', 'config', 'services/breeze.partial-entities'],
 	function (system, logger, model, config, mapper) {
-
 		var EntityQuery = breeze.EntityQuery,
 			manager = configureBreezeManager();
+
+		var hasChanges = ko.observable(false);
+
+		manager.hasChangesChanged.subscribe(function (eventArgs) {
+			hasChanges(eventArgs.hasChanges);
+		});
 
 		var entityNames = model.entityNames;
 
@@ -94,11 +99,34 @@
 			}
 		};
 
+		var saveChanges = function () {
+			return manager.saveChanges().then(saveSucceeded).fail(saveFailed);
+
+			function saveSucceeded(saveResult) {
+				log('Saved data successfully.', saveResult, true);
+			}
+
+			function saveFailed(error) {
+				var msg = 'Save failed: ' + error.message;
+				logger.log(msg, error, system.getModuleId(datacontext), true);
+				error.message = msg;
+				throw error;
+			}
+		};
+
+		var cancelChanges = function () {
+			return manager.rejectChanges();
+			log('Cancel change.', null, true);
+		};
+
 		var datacontext = {
 			getSpeakerPartials: getSpeakerPartials,
 			getSessionPartials: getSessionPartials,
 			getSessionById: getSessionById,
-			primeData: primeData
+			primeData: primeData,
+			saveChanges: saveChanges,
+			cancelChanges: cancelChanges,
+			hasChanges: hasChanges
 		};
 		return datacontext;
 

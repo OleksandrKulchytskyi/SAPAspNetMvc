@@ -17,19 +17,14 @@ namespace SPAStarter.Controllers
 
 		#region OData Future: IQueryable<T>
 
-		//[Queryable]
-		// public IQueryable<Person> Get()
-
 		#endregion OData Future: IQueryable<T>
 
-		// GET /api/persons
 		public IEnumerable<Person> Get()
 		{
 			return Uow.Persons.GetAll()
 				.OrderBy(p => p.FirstName);
 		}
 
-		// GET /api/persons/5
 		public Person Get(int id)
 		{
 			var person = Uow.Persons.GetById(id);

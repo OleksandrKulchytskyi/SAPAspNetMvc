@@ -13,7 +13,6 @@ define(function (require) {
 	app.start().then(function () {
 
 		router.useConvention();
-
 		viewLocator.useConvention();
 
 		//transition was added
