@@ -7,12 +7,17 @@ function (datacontext) {
 		return datacontext.getSpeakerPartials(speakers);
 	};
 
+	var deactivate = function () {
+		speakers([]);
+	};
+
 	var refresh = function () {
 		return datacontext.getSpeakerPartials(speakers, true);
 	};
 
 	var vm = {
 		activate: activate,
+		deactivate: deactivate,
 		speakers: speakers,
 		title: 'Speakers',
 		refresh: refresh

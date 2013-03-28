@@ -86,16 +86,23 @@
 
 		var primeData = function () {
 			var promise = Q.all([getLookups(),
-				getSpeakerPartials(null, true)]);
+				getSpeakerPartials(null, true)])
+			.then(applyValidators);
+
 			return promise.then(success);
 
 			function success() {
 				datacontext.lookups = {
-					rooms: getLocal('Rooms', 'name'),
-					tracks: getLocal('Tracks', 'name'),
-					timeSlots: getLocal('TimeSlots', 'start'),
-					speakers: getLocal('Persons', model.orderBy.speaker)
+					rooms: getLocal('Rooms', 'name', true),
+					tracks: getLocal('Tracks', 'name', true),
+					timeSlots: getLocal('TimeSlots', 'start', true),
+					speakers: getLocal('Persons', model.orderBy.speaker, true)
 				};
+				log('Prime data', datacontext.lookups);
+			}
+
+			function applyValidators() {
+				model.applySessionValidators(manager.metadataStore);
 			}
 		};
 
@@ -107,7 +114,7 @@
 			}
 
 			function saveFailed(error) {
-				var msg = 'Save failed: ' + error.message;
+				var msg = 'Save failed: ' + getErrorMessages(error);
 				logger.log(msg, error, system.getModuleId(datacontext), true);
 				error.message = msg;
 				throw error;
@@ -157,15 +164,44 @@
 
 		function getLookups() {
 			return EntityQuery.from('Lookups')
-			.using(manager).execute().fail(onFail);
+			.using(manager).execute().then(processLookups).fail(onFail);
+		}
+
+		function processLookups() {
+			model.createNullos(manager);
 		}
 
 		function log(msg, data, showToast) {
 			logger.log(msg, data, system.getModuleId(datacontext), showToast);
 		}
 
-		function getLocal(resource, ordering) {
+		function getLocal(resource, ordering, includeNullos) {
 			var query = EntityQuery.from(resource).orderBy(ordering);
+			if (!includeNullos) {
+				query = query.where('id', '!=', 0);
+			}
 			return manager.executeQueryLocally(query);
 		}
+
+		function getErrorMessages(error) {
+			var msg = error.message;
+			if (msg.match(/validation error/i)) {
+				return getValidationMessages(error);
+			}
+			return msg;
+		}
+
+		function getValidationMessages(error) {
+			try {
+				return error.entitiesWithErrors.map(function (entity) {
+					return entity.entityAspect.getValidationErrors().map(function (valError) {
+						return valError.errorMessage;
+					}).join('; <br/>');
+				}).join('; <br/>');
+			} catch (e) {
+
+			}
+			return 'validation error.';
+		}
+
 	});

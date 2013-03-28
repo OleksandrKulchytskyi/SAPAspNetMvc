@@ -3,16 +3,16 @@ function (system, logger, router, config, datacontext) {
 
 	var activate = function () {
 		datacontext.primeData()
-		.then(boot)
-		.fail(failInitialization);
+		.then(boot).fail(failInitialization);
 
 		function failInitialization(error) {
+			console.log(error);
 			var msg = "Application failed :" + error.message;
 			logger.logError(msg, error, system.getModuleId(shell), true);
 		}
 
 		function boot() {
-			logger.log("SPAStarter is started!", null, system.getModuleId(shell), true);
+			logger.log("SPAStarter is started.", null, system.getModuleId(shell), true);
 			router.map(config.routes);
 			return router.activate(config.startModule);
 		}

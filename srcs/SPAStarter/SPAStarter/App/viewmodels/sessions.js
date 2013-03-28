@@ -6,6 +6,10 @@ function (datacontext, router) {
 		return datacontext.getSessionPartials(sessions);
 	};
 
+	var deactivate = function () {
+		sessions([]);
+	};
+
 	var refresh = function () {
 		console.log('refreshing');
 		return datacontext.getSessionPartials(sessions, true);
@@ -33,6 +37,7 @@ function (datacontext, router) {
 
 	var vm = {
 		activate: activate,
+		deactivate: deactivate,
 		sessions: sessions,
 		title: 'Sessions',
 		viewAttached: viewAttached,

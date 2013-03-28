@@ -36,7 +36,7 @@
 		settings: { admin: true }
 	}];
 
-	var startModule = 'sessions';
+	var startModule = 'speakers';
 
 	return {
 		imageSettings: imageSettings,
