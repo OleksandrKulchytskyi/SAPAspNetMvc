@@ -206,10 +206,10 @@
     <Content Include="Content\images\photos\tim_heuer.jpg" />
     <Content Include="Content\images\photos\unknown_person.jpg" />
     <Content Include="Content\images\photos\ward_bell.jpg" />
+    <Content Include="Content\styles.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Index.cshtml" />
-    <Content Include="Content\Style.less" />
     <Content Include="App\services\breeze.partial-entities.js" />
     <None Include="_splash.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />

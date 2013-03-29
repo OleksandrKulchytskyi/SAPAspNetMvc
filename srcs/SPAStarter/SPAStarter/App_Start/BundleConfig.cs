@@ -37,8 +37,10 @@ namespace SPAStarter
 						"~/Content/bootstrap.min.css",
 						"~/Content/bootstrap-responsive.min.css",
 						"~/Content/toastr.min.css",
+						"~/Content/durandal.css",
 						"~/Content/font-awesome.min.css",
 						"~/Content/ie10mobile.css",
+						"~/Content/styles.css",
 						"~/Content/app.css"));
 		}
 
